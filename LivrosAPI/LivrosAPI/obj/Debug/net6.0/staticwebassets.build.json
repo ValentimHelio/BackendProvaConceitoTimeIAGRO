@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Nx1uu2LMfnJt2bCzisT7Hm1OSrigpJrWcgJ5DHAELAQ=",
+  "Source": "LivrosAPI",
+  "BasePath": "_content/LivrosAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

@@ -1,0 +1,202 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Minha API",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Livro/BuscarLivros": {
+      "get": {
+        "tags": [
+          "Livro"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Identificador do Livro",
+            "schema": {
+              "type": "integer",
+              "description": "Identificador do Livro",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nome",
+            "in": "query",
+            "description": "Nome do Livro",
+            "schema": {
+              "type": "string",
+              "description": "Nome do Livro"
+            }
+          },
+          {
+            "name": "Autor",
+            "in": "query",
+            "description": "Nome do Autor",
+            "schema": {
+              "type": "string",
+              "description": "Nome do Autor"
+            }
+          },
+          {
+            "name": "Valor",
+            "in": "query",
+            "description": "Preço Máximo do Livro",
+            "schema": {
+              "type": "number",
+              "description": "Preço Máximo do Livro",
+              "format": "double"
+            }
+          },
+          {
+            "name": "Ilustrador",
+            "in": "query",
+            "description": "Ilustrador do Livro",
+            "schema": {
+              "type": "string",
+              "description": "Ilustrador do Livro"
+            }
+          },
+          {
+            "name": "Genero",
+            "in": "query",
+            "description": "Gênero do Livro",
+            "schema": {
+              "type": "string",
+              "description": "Gênero do Livro"
+            }
+          },
+          {
+            "name": "OrdenarPor",
+            "in": "query",
+            "description": "Ordenar Por (asc/desc)",
+            "schema": {
+              "type": "string",
+              "description": "Ordenar Por (asc/desc)"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Livro"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Livro"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Livro"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Livro/CalcularFrete/{id}": {
+      "get": {
+        "tags": [
+          "Livro"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Especificacoes": {
+        "type": "object",
+        "properties": {
+          "Originally published": {
+            "type": "string",
+            "nullable": true
+          },
+          "author": {
+            "type": "string",
+            "nullable": true
+          },
+          "Page count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "illustrator": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "genres": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Livro": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "specifications": {
+            "$ref": "#/components/schemas/Especificacoes"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
